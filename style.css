@@ -18,12 +18,12 @@ body {
   width: 370px;
   margin: auto 0;
 }
-a {
+header a {
   text-decoration: none;
   color: rgb(109, 109, 223);
   padding: 5px;
 }
-a:hover {
+header a:hover {
   color: rgb(0, 0, 255);
   scale: 1.2;
 }
@@ -32,7 +32,7 @@ header img {
 }
 
 #Accueil {
-  background: #6a62e1;
+  background: #62e16d;
   border-radius: 10px;
   margin: 20px auto;
   padding: 10px;
@@ -53,7 +53,7 @@ header img {
 }
 
 #Paragraphe {
-  background: rgb(97 213 219);;
+  background: rgb(255, 255, 255);;
   border-radius: 10px;
   margin: 10px;
 }
@@ -198,7 +198,6 @@ li img {
   background: white;
   border-radius: 16px;
   padding: 30px;
-  justify-content: center;
   width: 30%;
   margin: auto;
 }
@@ -207,20 +206,16 @@ li img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px;
+  margin: auto;
 }
 
-input {
-  flex: 1;
-  padding: 14px 16px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  font-size: 15px;
-  width: 250px;
-}
-
-input:focus {
-  outline: none;
-  border-color: #667eea;
+input, textarea{
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 button {
@@ -239,13 +234,12 @@ button:hover {
 }
 
 .inscrire {
-  background: #532d9f;
+  background: #ffffff;
   border-radius: 16px;
   padding: 40px;
   width: 100%;
-  max-width: 400px;
+  width: 30%;
   margin: auto;
-  display: block;
   justify-content: center;
 }
 

@@ -1,7 +1,7 @@
 let i=0;
 let j=0;
 let k =0;
-const images = ['images/htmlmage.png', 'images/cssmage.png', 'images/jsmage.png', 'images/javamage.png', 'images/pythonmage.png'];
+
 const cards = ['card1', 'card2', 'card3', 'card4', 'card5', 'card6']
 const images1 = ['image1', 'image2', 'image3', 'image4', 'image5', 'image6'];
 const texts = ['text1', 'text2', 'text3', 'text4', 'text5', 'text6'];
@@ -12,10 +12,15 @@ const image2 = [['images/jscode.jpeg','images/finance.jpeg'], ['images/javacode.
 let time = 2000;
 const image = document.getElementById('images');
 function change_image(){
-    image.src = images[i];
-    if(i<images.length-1){
+    image.src = image2[i][k];
+    if(i<image2.length-1){
         i++;
     }else{
+        if(k === 0){
+            k++;
+        }else{
+            k--;
+        }
         i=0;
         
     }

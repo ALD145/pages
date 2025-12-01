@@ -1,30 +1,34 @@
 header {
-  background: white;
-  height: 70px;
+  background: #ffffff;
+  height: 40px;
   padding: 10px 25px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  Z-index: 10;
 }
 
 body {
-  background: lightblue;
+  background: #e8f4f8;
   margin: 0;
 }
 #navigation {
   display: flex;
   justify-content: space-between;
   width: 370px;
-  margin: auto 0;
+  margin:  auto 0;
 }
 header a {
   text-decoration: none;
-  color: rgb(109, 109, 223);
+  color: #2563eb;
   padding: 5px;
+  
 }
 header a:hover {
-  color: rgb(0, 0, 255);
+  color: #1e40af;
   scale: 1.2;
 }
 header img {
@@ -32,7 +36,7 @@ header img {
 }
 
 #Accueil {
-  background: #62e16d;
+  background: #475569;
   border-radius: 10px;
   margin: 20px auto;
   padding: 10px;
@@ -53,7 +57,7 @@ header img {
 }
 
 #Paragraphe {
-  background: rgb(255, 255, 255);;
+  background: #f1f5f9;
   border-radius: 10px;
   margin: 10px;
 }
@@ -73,11 +77,16 @@ header img {
 }
 
 #savoir_plus {
-  background: orange;
+  background: #f59e0b;
   font-size: 30px;
   width: 250px;
   margin: auto;
   border-radius: 10px;
+}
+
+#savoir_plus a{
+  text-decoration: none;
+  color: #ffffff;
 }
 
 #savoir_plus:hover {
@@ -85,7 +94,7 @@ header img {
 }
 
 footer {
-  background: rgba(0, 32, 51);
+  background: #1e293b;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -145,12 +154,13 @@ li img {
 }
 
 #Projets {
-  background: #100b18;
+  background: #1e1b4b;
   border-radius: 15px;
   justify-content: center;
   width: 70%;
   margin: auto;
   padding: 10px;
+  margin-bottom: 30px;
 }
 
 .part {
@@ -159,7 +169,7 @@ li img {
 }
 
 .card {
-  background: white;
+  background: #ffffff;
   width: 200px;
   height: 250px;
   margin: 20px;
@@ -195,11 +205,12 @@ li img {
 }
 
 #Contact {
-  background: white;
+  background: #ffffff;
   border-radius: 16px;
   padding: 30px;
   width: 30%;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 #continer {
@@ -215,11 +226,11 @@ input, textarea{
   padding: 12px;
   margin-bottom: 15px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #cbd5e1;
 }
 
 button {
-  background: blue;
+  background: #3b82f6;
   color: white;
   border: none;
   padding: 16px;
@@ -230,7 +241,7 @@ button {
   margin-top: 10px;
 }
 button:hover {
-  background: rgb(92, 92, 230);
+  background: #2563eb;
 }
 
 .inscrire {
@@ -241,6 +252,7 @@ button:hover {
   width: 30%;
   margin: auto;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .inscrire form{

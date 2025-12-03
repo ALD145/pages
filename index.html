@@ -1,89 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-  </head>
-  <body>
-    <header>
-        <img src="images/logo.jpeg" />
-      <h2 style="margin: auto; color: rgb(141 140 58);">Accueil</h2>
-      <div id="navigation">
-        <a href="Projets.html">Projets</a>
-        <a href="Contact.html">Contact</a>
-        <a href="inscrire.html">S’inscrire</a>
-        <a href="connecter.html">Se connecter</a>
-      </div>
-    </header>
-    <div id="image_head" style="width: 100%; border-radius: 20px; text-align: center;">
-      <img id="images" src="images/algorith.jpeg" style="width: 70%; border-radius: 20px; height: 500px;">
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panneau de Gestion des Utilisateurs</title>
+  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="ex1.css">
+</head>
+<body>
+
+  <!-- ===== Page de Connexion ===== -->
+  <section class="page-center" id="page-center">
+    <div class="card auth-card">
+      <h2>Connexion</h2>
+      <form id="loginForm">
+        <label for="name1">Nom</label>
+        <input id="name1" type="text" placeholder="Votre nom" required>
+
+        <label for="password1">Code</label>
+        <input id="password1" type="password" placeholder="Mot de passe" maxlength="8" required>
+
+        <button type="button" id="submit">Se connecter</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Tableau de Bord Propriétaire ===== -->
+  <section id="owner-options" class="dashboard hidden">
+    <div class="container">
+      <div class="card option" id="newUsersBtn">Nouvel Utilisateur</div>
+      <div class="card option" id="usersBtn">Utilisateurs</div>
+      <div class="card option" id="history">History</div>
+    </div>
+  </section>
+
+  <!-- ===== Page d'Enregistrement ===== -->
+  <section class="page-center hidden" id="page-register">
+    <button id="back-management1" class="back-btn">&larr;</button>
+    <div class="card auth-card">
+      <h2>Créer un Utilisateur</h2>
+      <form id="registerForm">
+        <label for="name2">Nom</label>
+        <input id="name2" type="text" placeholder="Votre nom" required>
+
+        <label for="password2">Code</label>
+        <input id="password2" type="password" placeholder="Mot de passe" maxlength="8" required>
+
+        <label for="options">Type</label>
+        <select id="options">
+          <option value="company">Entreprise</option>
+          <option value="Pharma">Pharma</option>
+        </select>
+
+        <div id="checkboxg" class="checkbox-group">
+          <input type="checkbox" id="checkbox">
+          <label for="checkbox">Actif</label>
+        </div>
+
+        <button type="button" id="register">Enregistrer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Page de Gestion ===== -->
+  <section id="management" class="dashboard hidden">
+    <button id="back-management" class="back-btn">&larr;</button>
+    <h2 class="title">Gestion des Utilisateurs</h2>
+    <div id="userCards" class="cards-container"></div>
+  </section>
+
+  <!-- ===== Options Entreprise ===== -->
+  <!-- ===== Options Entreprise ===== -->
+<section id="company-options" class="dashboard hidden">
+  <div class="container">
+    <div class="card option" id="product">Produits</div>
+    <div class="card option" id="commands">Commandes</div>
+    <!-- Add this new button -->
+    <div class="card option" id="company-pharma-btn">Pharma</div>
+  </div>
+</section>
+
+  <!-- ===== Pharma Companies List ===== -->
+  <section id="pharma-companies" class="dashboard hidden">
+    <button id="back-pharma-companies" class="back-btn">&larr;</button>
+    <h2 class="title">Active Companies</h2>
+    <div id="companiesContainer" class="cards-container"></div>
+  </section>
+
+  <!-- ===== Create Command Page ===== -->
+  <div id="create-command-page" class="hidden">
+    <div id="zeze">
+      <button id="back-create-command" class="back-btn">&larr;</button>
+      <button id="save-new-command" class="back-btn">Save Command</button>
     </div>
 
-    <div id="Accueil">
-      <div id="Paragraphe">
-        <div id="left_side">
-          <h2>Connaissance</h2>
-          <ul>
-            <li>Connaissances initiales en HTML</li>
-            <li>Connaissances initiales en CSS</li>
-            <li>Connaissances initiales en Java script</li>
-            <li>Connaissances initiales en Java</li>
-            <li>Connaissances initiales en Python</li>
-          </ul>
-        </div>
-        <div id="right_side">
-          <h2>présentation</h2>
-          <ul>
-            <li>Nom: Allada Mohamed</li>
-            <li>Level d'etude: LNIG2</li>
-            <li>Univers: IPSAS</li>
-          </ul>
-        </div>
-      </div>
-      <div id="savoir_plus">
-        <a href="Projets.html">En savoir plus</a>
-      </div>
+    <h2 class="title" id="create-command-title">Create Command</h2>
+
+    <div class="product-container">
+      <div class="product-column" id="leftCommandProducts"></div>
+      <div class="product-column" id="rightCommandProducts"></div>
     </div>
 
-    <footer>
-      <div class="col">
-        <h4>Réseaux sociaux</h4>
-        <ul>
-          <li>
-            <img class="app" src="images/facebook.png" />
-            <i>Page Facebook</i> 
-          </li>
-          <li>
-            <img class="app" src="images/instagram.png" />
-            <i>Instagram</i> 
-          </li>
-          <li>
-            <img class="app" src="images/linkedin.png" />
-            <i>linkedin</i> 
-          </li>
-        </ul>
-      </div>
+    <div class="pagination">
+      <button id="prevCreateCommandPage" disabled>⬅ Précédent</button>
+      <span id="createCommandPageCounter">1 / 1</span>
+      <button id="nextCreateCommandPage" disabled>Suivant ➡</button>
+    </div>
+  </div>
 
-      <div class="col">
-        <h4>Contacts</h4>
-        <ul>
-          <li>+222 22 34 56 78</li>
-          <li>contact@gmail.com</li>
-          <li>Sfax, Tunisie</li>
-        </ul>
-      </div>
+  <!-- ===== Produits ===== -->
+  <div id="products" class="hidden">
+    <div id="zeze">
+      <button id="back-product" class="back-btn">&larr;</button>
+      <button id="active-toggle" class="active-toggle-btn">Active</button>
+      <button id="save" class="back-btn hidden">Enregistrer</button>
+      <button id="final" class="final back-btn">Masquer les Inactifs</button>
+    </div>
 
-      <div class="col">
-        <h4>Qui sommes-nous ?</h4>
-        <ul>
-          <li>services et activity</li>
-          <li>Nos Agences</li>
-        </ul>
-      </div>
-    </footer>
+    <h2 class="title">Produits</h2>
 
-    <script src="function.js"></script>
-  </body>
+    <!-- + Ajouter -->
+    <button id="addProduct" class="add-btn">＋ Ajouter un Produit</button>
+    <input type="date" class="add-btn" id="dates">
+
+    <div class="product-container">
+      <div class="product-column" id="leftItems"></div>
+      <div class="product-column" id="rightItems"></div>
+    </div>
+
+    <div class="pagination">
+      <button id="prevPage" disabled>⬅ Précédent</button>
+      <span id="pageCounter">1 / 1</span>
+      <button id="nextPage" disabled>Suivant ➡</button>
+    </div>
+  </div>
+
+  <!-- ===== Commands Page ===== -->
+  <section id="commands-page" class="dashboard hidden">
+    <button id="back-commands" class="back-btn">&larr;</button>
+    <h2 class="title">Commands</h2>
+    <div id="commandsContainer" class="commands-container"></div>
+  </section>
+
+  <!-- ===== Command Details Page ===== -->
+  <div id="command-details-page" class="hidden">
+    <div id="zeze">
+      <button id="back-to-commands" class="back-btn">&larr;</button>
+      <button id="save-command" class="back-btn hidden">Enregistrer</button>
+      <button id="reject-command" class="back-btn hidden">Rejeter</button>
+      <button id="ignore-command" class="back-btn hidden">Ignorer Command</button>
+    </div>
+
+    <h2 class="title" id="command-title">Détails de la Commande</h2>
+
+    <div class="product-container">
+      <div class="product-column" id="leftCommandItems"></div>
+      <div class="product-column" id="rightCommandItems"></div>
+    </div>
+
+    <div class="pagination">
+      <button id="prevCommandPage" disabled>⬅ Précédent</button>
+      <span id="commandPageCounter">1 / 1</span>
+      <button id="nextCommandPage" disabled>Suivant ➡</button>
+    </div>
+  </div>
+
+  <!-- ===== Pharma Options ===== -->
+  <!-- ===== Pharma Options ===== -->
+<section id="pharma-options" class="dashboard hidden">
+  <div class="container">
+    <div class="card option" id="pharma-companies-btn">Companies</div>
+    <div class="card option" id="pharma-commands-btn">Commands</div>
+    <!-- Add this new button -->
+    <div class="card option" id="pharma-products-btn">Produits</div>
+  </div>
+</section>
+
+<!-- Add this new section for Pharma Products -->
+<div id="pharma-products" class="hidden">
+  <div id="zeze">
+    <button id="back-pharma-products" class="back-btn">&larr;</button>
+    <button id="pharma-active-toggle" class="active-toggle-btn">Active</button>
+    <button id="save-pharma-products" class="back-btn hidden">Enregistrer</button>
+    <button id="final-pharma-products" class="final back-btn">Masquer les Inactifs</button>
+  </div>
+
+  <h2 class="title">Produits Pharma</h2>
+
+  <button id="add-pharma-product" class="add-btn">＋ Ajouter un Produit</button>
+  <input type="date" class="add-btn" id="pharma-dates">
+
+  <div class="product-container">
+    <div class="product-column" id="leftPharmaItems"></div>
+    <div class="product-column" id="rightPharmaItems"></div>
+  </div>
+
+  <div class="pagination">
+    <button id="prevPharmaPage" disabled>⬅ Précédent</button>
+    <span id="pharmaPageCounter">1 / 1</span>
+    <button id="nextPharmaPage" disabled>Suivant ➡</button>
+  </div>
+</div>
+
+<!-- Add this new section for Company Pharma List -->
+<section id="company-pharma-list" class="dashboard hidden">
+  <button id="back-company-pharma" class="back-btn">&larr;</button>
+  <h2 class="title">Active Pharma</h2>
+  <div id="pharmaListContainer" class="cards-container"></div>
+</section>
+
+<!-- Add this new section for Create Pharma Command -->
+<div id="create-pharma-command-page" class="hidden">
+  <div id="zeze">
+    <button id="back-create-pharma-command" class="back-btn">&larr;</button>
+    <button id="save-new-pharma-command" class="back-btn">Create Command</button>
+  </div>
+
+  <h2 class="title" id="create-pharma-command-title">Create Pharma Command</h2>
+
+  <div class="product-container">
+    <div class="product-column" id="leftPharmaCommandProducts"></div>
+    <div class="product-column" id="rightPharmaCommandProducts"></div>
+  </div>
+
+  <div class="pagination">
+    <button id="prevCreatePharmaCommandPage" disabled>⬅ Précédent</button>
+    <span id="createPharmaCommandPageCounter">1 / 1</span>
+    <button id="nextCreatePharmaCommandPage" disabled>Suivant ➡</button>
+  </div>
+</div>
+
+  <!-- ===== Pharma Companies List ===== -->
+  <section id="pharma-companies" class="dashboard hidden">
+    <button id="back-pharma-companies" class="back-btn">&larr;</button>
+    <h2 class="title">Active Companies</h2>
+    <div id="companiesContainer" class="cards-container"></div>
+  </section>
+
+  <!-- ===== Create Command Page ===== -->
+  <div id="create-command-page" class="hidden">
+    <div id="zeze">
+      <button id="back-create-command" class="back-btn">&larr;</button>
+      <button id="save-new-command" class="back-btn">Enregistrer</button>
+    </div>
+
+    <h2 class="title" id="create-command-title">Create Command</h2>
+
+    <div class="product-container">
+      <div class="product-column" id="leftCommandProducts"></div>
+      <div class="product-column" id="rightCommandProducts"></div>
+    </div>
+
+    <div class="pagination">
+      <button id="prevCreateCommandPage" disabled>â¬… PrÃ©cÃ©dent</button>
+      <span id="createCommandPageCounter">1 / 1</span>
+      <button id="nextCreateCommandPage" disabled>Suivant âž¡</button>
+    </div>
+  </div>
+
+  <!-- Replace the history page section in index.html with this: -->
+<!-- ===== History Page ===== -->
+<section id="history-page" class="dashboard hidden">
+  <button id="back-history" class="back-btn">&larr;</button>
+  <h2 class="title">History</h2>
+  
+  <div class="search-container" style="max-width: 500px; margin: 0 auto 30px; padding: 0 20px;">
+    <div style="display: flex; gap: 10px;">
+      <input type="text" id="history-search-input" placeholder="Enter command ID..." autocomplete="off"
+             style="flex: 1; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 15px;">
+      <button id="history-search-btn" class="back-btn" style="white-space: nowrap;">Search</button>
+    </div>
+  </div>
+
+  <div id="history-results" class="cards-container" style="padding: 20px;"></div>
+</section>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="function.js"></script>
+  
+</body>
 </html>
